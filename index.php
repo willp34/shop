@@ -27,7 +27,7 @@ $products = array(
 </head>
 <body>
 			<div class="container col-md-12 ">
-			<div><h1> my shopping cart example</h1></div>
+			<div><h1> My Shopping Cart Example</h1></div>
 			<div  class="col-md-4 col-md-4-offset-2 ">
 		
 			 <div class="table-responsive">
