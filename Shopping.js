@@ -1,9 +1,20 @@
 $(document).ready(function() {
 	
+	
+		 var select = document.getElementById("converter");
+						var ops ="";
+						for(var i in resp.quotes){
+						
+							
+						ops+="<option value="+ resp.quotes[i]+" >"+ i+"</option>";
+						}
+						$(select).append(ops);
+	 });
+	//alert(jsn);
 	/*
-			get all exchange rates fromserverver and ad them to select
+			get all exchange rates from server and ad them to select
 	*/
-	$.ajax({
+	/* $.ajax({
 					 type: 'POST',
 					 url: 'myjson.php',
 					dataType: "json",
@@ -18,7 +29,9 @@ $(document).ready(function() {
 						$(select).append(ops);
 					},
 
-						});
+						}); */
+	
+	
 	
 	
 	var prices= 0;
