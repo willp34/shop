@@ -52,7 +52,7 @@ $(document).ready(function() {
 
     });
 	/*
-			shopp link close is clicked ok remove item fro cart and deducts fromtotal
+			shop link close is clicked to remove item from cart and deducts from total
 	*/
 	$('#shoppingList').on("click", " a.close", function () { 
 	var value=$(this).data('id');
@@ -65,7 +65,7 @@ $(document).ready(function() {
 			$(this).parent().remove();
 	});
 /*
-			selct currencey you wish to convert and new currency is show calculating with exchange rate
+			select currency you wish to convert and new currency is show calculating with exchange rate
 	*/
  $("#converter").on('change',function(e){
 	 var convert =parseFloat($('#total').text()) * parseFloat(this.value); 
