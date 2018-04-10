@@ -48,6 +48,9 @@ $(document).ready(function() {
         $('#shoppingList ul').append('<li class="list-group-item '+goods+'">' + goods + " <a href='#' data-id='"+num+"'  class='close'>  X   " + '</a></li>');
 
 		$('#total').text(result);
+					var convert =parseFloat($('#total').text()) * parseFloat($("#converter option:selected" ).val()); 
+
+	 $('#change').text(convert.toFixed(2));
               // alert(+"  "+price);
 
     });
