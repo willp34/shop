@@ -44,7 +44,7 @@ $products = array(
 							   foreach($products as  $key=>$val){
 							  ?><tr>
 									<td><span class="item"><?php echo $val["item"];  ?></span></td>
-									<td><span class="price"><?php echo $val["price"]; ?></span> <a href="#" class="add">Add</s></td>
+									<td><span class="price"><?php echo $val["price"]; ?></span> <a href="#" class=" btn btn-primary add">Add</s></td>
 							  </tr>
 							  <?php  
 							  }
