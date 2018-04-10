@@ -5,7 +5,7 @@ $(document).ready(function() {
 	*/
 	$.ajax({
 					 type: 'POST',
-					 url: 'http://localhost/shop/myjson.php',
+					 url: 'myjson.php',
 					dataType: "json",
 					success: function(res){
 						var select = document.getElementById("converter");
