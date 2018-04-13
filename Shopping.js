@@ -49,12 +49,14 @@ var groups = {};
 		var goods = $(this).parent().parent().children("td").children(".item").text();
 		//
 		num = parseFloat($(this).closest('td').children('.price').text());
-		prices += parseFloat($(this).closest('td').children('.price').text());
-		console.log("new  price "+prices.toFixed(2));
-		var result = prices.toFixed(2);
+		prices = parseFloat(prices)+ parseFloat($(this).closest('td').children('.price').text());
+		prices = prices.toFixed(2);
+		console.log(prices);
+		console.log("new  price "+prices);
+		var result = prices;
 		// 'li.'+ClassName +"  ul
 	if ($('#shoppingList ul li.'+goods ).length) {
-         $('#shoppingList ul li.'+goods+' ul').append('<li class="list-group-item ">' + goods +" <a href='#' data-id='"+num+"'  class='close'>  X   " + '</a></li>');
+         $('#shoppingList ul li.'+goods+' ul').append('<li class="list-group-item "><span>' + goods +" </span><a href='#' data-id='"+num+"'  class='close'>  X   " + '</a></li>');
 		//console.log("sub list yes");
     } else {
         $('#shoppingList ul.list').append('<li class="list-group-item '+goods+'">' + goods + '(<span class="num-items"></span>)  <a href="#" data-id="'+num+'"  class="close">  X   ' + '</a><ul></ul></li>');
@@ -75,37 +77,35 @@ var groups = {};
 	*/
 	$('#shoppingList ul.list ').on("click", " a.close", function () {
 
-					console.log("clicked");	
-              if($(this).parent().children("ul").length) {
+				//	console.log("clicked  "+$(this).parent().children("ul").length);	
+              if($(this).parent().children("ul").children().length>0) {
 				var children_num =$(this).parent().children("ul").children().length
 				//console.log(" number of children "+$(this).parent().children("ul").children().length)
 				var deduct_value = parseFloat( $('#total').text());
-				console.log("old  "+deduct_value);
-				var val_d =0;
+				//console.log("old  "+deduct_value);
+				var sub_item_value = 0;
+				var value_after_removal = 0 
 				$($(this).parent().children("ul").children()).each(function(index, value){
-					val_d = $(this).children("a").attr("data-id");
-					deduct_value-= parseFloat($(this).children("a").attr("data-id"));
-		//			console.log($(this).children("a").attr("data-id")+"::"+children_num  +"   "+$('#total').text());
+					sub_item_value = $(this).children("a").attr("data-id");
+					deduct_value-= parseFloat(sub_item_value);
 				});
-				var total_deduct =(deduct_value- val_d).toFixed(2)
-				console.log(" ::::  "+total_deduct);
-				 $('#total').text(total_deduct);
-				 prices =parseFloat( total_deduct);
-						
+				value_after_removal =(deduct_value- sub_item_value).toFixed(2);
+				prices =parseFloat( value_after_removal);		
 			} 
 			else{
-			//	console.log("no children");
-				var value=$(this).data('id');
-				prices -= parseFloat(value);
-				var result =parseFloat( prices);
-				prices= result;
-				$('#total').text(result);
-				$('#total').data('id',result); 
-			}
-			console.log("price ="+prices)
-	var convert =parseFloat($('#total').text()) * parseFloat($("#converter option:selected" ).val()); 
+		//		console.log("no children");
+				sub_item_value=$(this).data('id');
+				prices -= parseFloat(sub_item_value);
+				value_after_removal =prices.toFixed(2);
+		}
+			$('#total').text(value_after_removal);
+			$('#total').data('id',value_after_removal); 
+			var convert =parseFloat($('#total').text()) * parseFloat($("#converter option:selected" ).val()); 
 			$('#change').text(convert.toFixed(2));
 			$(this).parent().remove();
+			var goods =$(this).parent().find('span').text();
+			var num_itms = $('#shoppingList ul.list li.'+goods+' ul li').length+1;
+			$('#shoppingList ul.list li.'+goods+' span.num-items').text(num_itms);
 	});
 /*
 			selct currencey you wish to convert and new currency is show calculating with exchange rate
