@@ -27,9 +27,18 @@ $products = array(
 </head>
 <body>
 			<div class="container col-md-12 ">
-			<div><h1> My Shopping Cart Example</h1></div>
+			<div><h1> my shopping cart example</h1></div>
 			<div  class="col-md-4 col-md-4-offset-2 ">
-		
+		    <ul class="demo">
+					<li class="foo">Item #1</li>
+					<li class="foo">Item #2</li>
+					<li class="foo">Item #3</li>
+					<li class="bar">Item #4</li>
+					<li class="bar">Item #5</li>
+					<li class="foo">Item #6</li>
+					<li class="foo">Item #7</li>
+					<li class="bar">Item #8</li>
+				</ul>
 			 <div class="table-responsive">
 					 <table id="products" class="table table-striped table-bordered table-hover">
 					  <thead>
@@ -44,7 +53,7 @@ $products = array(
 							   foreach($products as  $key=>$val){
 							  ?><tr>
 									<td><span class="item"><?php echo $val["item"];  ?></span></td>
-									<td><span class="price"><?php echo $val["price"]; ?></span> <a href="#" class=" btn btn-primary add">Add</s></td>
+									<td><span class="price"><?php echo $val["price"]; ?></span> <a href="#" class="btn btn-primary add">Add</s></td>
 							  </tr>
 							  <?php  
 							  }
@@ -58,7 +67,7 @@ $products = array(
 			<div class="col-md-4 col-md-4-offset-1" >
 			<div id="shoppingList">
 			  <h1>Shopping List</h1>
-							<ul class="list-group">
+							<ul class="list-group list">
 								
 							</ul>
 						</div>
